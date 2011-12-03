@@ -5,6 +5,9 @@ DemoApp::Application.routes.draw do
 
   resources :users
 
+  match '/about', :to => 'pages#about'
+  match '/help', :to => 'pages#help'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
