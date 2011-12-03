@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<h3>User <%= @user.id %></h3>
+
 <p>
   <b>First name:</b>
   <%= @user.first_name %>
@@ -19,6 +21,24 @@
   <b>Birthday:</b>
   <%= @user.birthday %>
 </p>
+
+<p>
+  <b>Posts:</b>
+  <%= @user.posts.count %>
+</p>
+
+<% unless @user.posts.empty? %>
+  <hr/>
+  <h3>Posts</h3>
+  
+  <table class="posts" summary="User posts">
+    <%= render @posts %>
+  </table>
+  <%= will_paginate @posts %>
+<% end %>
+
+<hr/>
+<h3>New Post</h3>
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
