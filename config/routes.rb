@@ -2,6 +2,7 @@ DemoApp::Application.routes.draw do
 
   resources :posts
   resources :users
+  match '/signup', :to => 'users#new'
 
   match '/about', :to => 'pages#about'
   match '/help', :to => 'pages#help'
