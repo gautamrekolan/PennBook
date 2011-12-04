@@ -2,6 +2,8 @@ DemoApp::Application.routes.draw do
   resources :users do
     resources :posts
   end
+  
+  root :to => "Users#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

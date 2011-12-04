@@ -1,21 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h3>User <%= @user.id %></h3>
+<h3><%= link_to @title, @user %></h3>
 
-<p>
-  <b>First name:</b>
-  <%= @user.first_name %>
-</p>
-
-<p>
-  <b>Last name:</b>
-  <%= @user.last_name %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
+<p><%= link_to @user.email, "mailto:" + @user.email %></p>
 
 <p>
   <b>Birthday:</b>
@@ -23,14 +10,16 @@
 </p>
 
 <p>
-  <b>Posts:</b>
+  <b>Post Count:</b>
   <%= @user.posts.count %>
 </p>
 
-<% unless @user.posts.empty? %>
-  <hr/>
-  <h3>Posts</h3>
-  
+<hr/>
+<h3>Posts</h3>
+
+<% if @user.posts.empty? %>
+  No posts found for this user.
+<% else %>
   <table class="posts" summary="User posts">
     <%= render @posts %>
   </table>

@@ -1,9 +1,11 @@
 <tr>
-  Test
   <td class="post">
     <span class="content"><%= post.content %></span>
-    <span class="timestamp">
-      Posted <%= time_ago_in_words(post.created_at) %> ago.
+    <% if session[:user_id] == post.user_id %>
+      <span style="float: right;"><%= link_to "Delete", [@user, post], :method => :delete %></span>
+    <% end %>
+    <span class="timestamp" style="float: right; color: #999;">
+      Posted <%= time_ago_in_words(post.created_at) %> ago
     </span>
   </td>
 </tr>
