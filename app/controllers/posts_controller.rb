@@ -40,7 +40,8 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(params[:post])
+    @user = current_user
+    @post = current_user.posts.build(params[:post])
 
     respond_to do |format|
       if @post.save
@@ -74,7 +75,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-
+    
     respond_to do |format|
       format.html { redirect_to posts_url }
       format.json { head :ok }

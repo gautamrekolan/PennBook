@@ -1,4 +1,5 @@
 DemoApp::Application.routes.draw do
+<<<<<<< HEAD
 
   resources :posts
   resources :users
@@ -6,6 +7,13 @@ DemoApp::Application.routes.draw do
 
   match '/about', :to => 'pages#about'
   match '/help', :to => 'pages#help'
+=======
+  resources :users do
+    resources :posts
+  end
+  
+  root :to => "Users#index"
+>>>>>>> posts
 
   root :to => 'pages#home'
   # The priority is based upon order of creation:

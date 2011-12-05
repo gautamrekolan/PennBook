@@ -1,24 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>First name:</b>
-  <%= @user.first_name %>
-</p>
+<h3><%= link_to @title, @user %></h3>
 
-<p>
-  <b>Last name:</b>
-  <%= @user.last_name %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
+<p><%= link_to @user.email, "mailto:" + @user.email %></p>
 
 <p>
   <b>Birthday:</b>
   <%= @user.birthday %>
 </p>
+
+<p>
+  <b>Post Count:</b>
+  <%= @user.posts.count %>
+</p>
+
+<hr/>
+<h3>Posts</h3>
+
+<% if @user.posts.empty? %>
+  No posts found for this user.
+<% else %>
+  <table class="posts" summary="User posts">
+    <%= render @posts %>
+  </table>
+  <%= will_paginate @posts %>
+<% end %>
+
+<hr/>
+<h3>New Post</h3>
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
