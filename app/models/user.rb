@@ -24,6 +24,14 @@ class User < ActiveRecord::Base
                     :length   => { :maximum => 63 },
                     :format   => { :with => email_regex },
                     :uniqueness => { :case_sensitive => false}
+                    
+  validates_each :birthday do |record, attr, value|
+    begin
+      Date.parse(value)
+    rescue
+      record.errors.add(attr, "Invalid date")
+    end
+  end
   
   # Ensure related posts are destroyed with the user
   has_many :posts, :dependent => :destroy
