@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'json'
 gem 'faker'
 gem 'less'
+gem 'gravatar_image_tag', '1.0.0.pre2'
 
 group :development do
   gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
