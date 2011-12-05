@@ -10,6 +10,10 @@ gem 'json'
 gem 'faker'
 gem 'less'
 
+group :development do
+  gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
+end
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

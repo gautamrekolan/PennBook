@@ -4,6 +4,7 @@ DemoApp::Application.routes.draw do
   match '/about', :to => 'pages#about'
   match '/help', :to => 'pages#help'
 
+  resources :interests
   resources :users do
     resources :posts
   end
