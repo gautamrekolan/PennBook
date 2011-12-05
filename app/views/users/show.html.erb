@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h3><%= link_to @title, @user %></h3>
-<%= gravatar_image_tag @user.email %>
+<%= gravatar_for @user, :size => 60 %>
 
 <p><%= link_to @user.email, "mailto:" + @user.email %></p>
 
