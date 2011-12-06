@@ -1,8 +1,8 @@
-<%= form_for @post do |f| %>
+<%= form_for @post, :url => new_user_post_path(@user, @post), :html => {:class => "post_form"} do |f| %>
   <div class="field">
-    <%= f.text_area :content %>
+    <%= f.text_field :content %>
   </div>
   <div class="actions">
-    <%= f.submit "Submit" %>
+    <%= f.submit "Submit", :class =>"btn primary" %>
   </div>
 <% end %>
