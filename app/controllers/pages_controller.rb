@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   def home
     @title = "Home"
-    @posts = Post.all
+    @posts = Post.paginate(:page => params[:page])
   end
 
   def about
