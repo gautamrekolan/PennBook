@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :email, :birthday, :password, :password_confirmation
 
   has_many :posts, :dependent => :destroy
+  has_many :likes
+  has_many :interests, :through => :likes
   has_many :relationships,  :foreign_key => "follower_id",
                             :dependent => :destroy
   has_many :following, :through => :relationships, :source => :followed
@@ -76,6 +78,18 @@ class User < ActiveRecord::Base
 
   def feed
     Post.from_users_followed_by(self)
+  end
+
+  def likes?(interest)
+    likes.find_by_interest_id(interest)
+  end
+
+  def like!(interest)
+    likes.create!(:interest_id => interest.id)
+  end
+
+  def unlike!(interest)
+    likes.create!(:interest_id => interest.id).destroy
   end
 
   private

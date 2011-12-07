@@ -1,0 +1,5 @@
+<%= form_for current_user.likes.
+                          build(:interest_id => @interest.id) do |f| %>
+  <div><%= f.hidden_field :interest_id %></div>
+  <div class="actions"><%= f.submit "Like" %></div>
+<% end %>

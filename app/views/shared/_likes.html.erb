@@ -1,0 +1,10 @@
+<% @interest ||= current_interest %>
+<div class="likes">
+  <table summary="Interest stats">
+    <tr>
+      <td>
+        <h4><%= @interest.users.count %> like this</h4>
+      </td>
+    </tr>
+  </table>
+</div>
