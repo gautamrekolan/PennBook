@@ -15,6 +15,15 @@ class User < ActiveRecord::Base
   attr_accessor :password
   attr_accessible :first_name, :last_name, :email, :birthday, :password, :password_confirmation
 
+  has_many :posts, :dependent => :destroy
+  has_many :relationships,  :foreign_key => "follower_id",
+                            :dependent => :destroy
+  has_many :following, :through => :relationships, :source => :followed
+  has_many :reverse_relationships, :foreign_key => "followed_id",
+                                   :class_name => "Relationship",
+                                   :dependent => :destroy
+  has_many :followers, :through => :reverse_relationships, :source => :follower
+
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :first_name,  :presence => true,
@@ -35,9 +44,6 @@ class User < ActiveRecord::Base
       record.errors.add(attr, "Invalid date")
     end
   end
-  
-  # Ensure related posts are destroyed with the user
-  has_many :posts, :dependent => :destroy
 
   before_save :encrypt_password
 
@@ -54,6 +60,18 @@ class User < ActiveRecord::Base
   def self.authenticate_with_salt(id, cookie_salt)
     user = find_by_id(id)
     (user && user.salt == cookie_salt) ? user : nil
+  end
+
+  def following?(followed)
+    relationships.find_by_followed_id(followed)
+  end
+
+  def follow!(followed)
+    relationships.create!(:followed_id => followed.id)
+  end
+
+  def unfollow!(followed)
+    relationships.find_by_followed_id(followed).destroy
   end
 
   private
