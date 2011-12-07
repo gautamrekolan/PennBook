@@ -15,11 +15,33 @@ a:hover {
   color: #000;
   text-decoration: none;
 }
+/* Forms */
 .field label {
   padding-right: 10px;
 }
 .field br {
   display: none;
+}
+#error_explanation {
+  border: solid 1px #CCC;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.field_with_errors {
+  display: block;
+  background: transparent;
+}
+.field_with_errors label {
+  color: red;
+}
+.field_with_errors input {
+  border-color: #EE5F5B;
+}
+.field_with_errors input:focus {
+  -webkit-box-shadow: 0 0 6px #f8b9b7;
+  -moz-box-shadow: 0 0 6px #f8b9b7;
+  box-shadow: 0 0 6px #f8b9b7;
 }
 header {
   position: fixed;
@@ -42,21 +64,19 @@ header .center img.logo {
   height: 25px;
 }
 /* Navigation */
-nav {
+ul#nav {
   float: right;
   margin-top: 2px;
   white-space: nowrap;
-}
-nav ul {
   margin: 0;
   padding: 0;
 }
-nav ul li {
+ul#nav li {
   list-style-type: none;
   display: inline-block;
   padding: 0.2em 0;
 }
-nav ul li a {
+ul#nav li a {
   padding: 0 5px;
 }
 /* Variables

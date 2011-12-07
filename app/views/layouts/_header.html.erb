@@ -1,30 +1,16 @@
 <header>
-<<<<<<< HEAD
-  <% logo = image_tag("logo.png", :alt => "Sample App", :class => "round logo") %>
-  <%= link_to logo, root_path %>
-  <nav class="round">
-    <ul>
+  <div class="center">
+    <% logo = image_tag("logo.png", :alt => "Sample App", :class => "logo") %>
+    <%= link_to logo, root_path %>
+    <ul id="nav"
       <li><%= link_to "Home", root_path %></li>
       <li><%= link_to "Profile", current_user %></li>
       <li><%= link_to "Help", help_path %></li>
       <% if signed_in? %>
-      <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
+        <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
       <% else %>
-      <li><%= link_to "Sign in", signin_path %></li>
+        <li><%= link_to "Sign in", signin_path %></li>
       <% end %>
     </ul>
-  </nav>
-=======
-  <div class="center">
-    <% logo = image_tag("logo.png", :alt => "Sample App", :class => "round logo") %>
-    <%= link_to logo, root_path %>
-    <nav>
-      <ul>
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Profile", '#' %></li>
-        <li><%= link_to "Account Settings", '#' %></li>
-      </ul>
-    </nav>
   </div>
->>>>>>> Made posts index & show work, also some styling
 </header>
