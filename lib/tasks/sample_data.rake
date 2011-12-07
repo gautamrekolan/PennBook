@@ -5,6 +5,7 @@ namespace :db do
     make_users
     make_posts
     make_relationships
+    make_interests
   end
 end
 
@@ -33,14 +34,6 @@ def make_posts
   end
 end
 
-def make_interest
-  50.times do
-    name = Faker::Address.city
-    description = Faker::Lorem.sentence(5)
-    interest.create!(:name => name, :description => description)
-  end
-end
-
 def make_relationships
   users = User.all
   user  = users.first
@@ -48,4 +41,12 @@ def make_relationships
   followers = users[3..40]
   following.each { |followed| user.follow!(followed) }
   followers.each { |follower| follower.follow!(user) }
+end
+
+def make_interests
+  50.times do
+    name = Faker::Address.city
+    description = Faker::Lorem.sentence(10)
+    Interest.create!(:name => name, :description => description)
+  end
 end
