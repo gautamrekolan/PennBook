@@ -16,10 +16,9 @@
       </p>
 
 
-      <h3>New Post</h3>
-      <%= render 'shared/post_form' %>
+      <%= render 'shared/post_form' if signed_in?%>
 
-      <hr/>
+      <br/>
       <h3>Posts</h3>
 
       <% if @user.posts.empty? %>
