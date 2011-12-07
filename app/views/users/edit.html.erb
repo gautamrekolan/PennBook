@@ -23,7 +23,8 @@
     <%= f.password_field :password_confirmation %>
   </div>
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Update", :class => "btn success" %>
+    <%= link_to "Delete User", user_path(@user), :action => "destroy", :class => "btn danger" %>
   </div>
 <% end %>
 

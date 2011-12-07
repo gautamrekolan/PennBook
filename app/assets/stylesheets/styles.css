@@ -96,15 +96,13 @@ ul#nav li {
 ul#nav li a {
   padding: 0 5px;
 }
+/* Posts */
+.timestamp {
+  float: right;
+  color: #999;
+}
 table.posts {
   width: 600px;
-}
-table.posts td.post {
-  padding-left: 50px;
-}
-table.posts td.post .thumb {
-  float: left;
-  margin-left: -50px;
 }
 table.posts td.post span.user {
   float: left;

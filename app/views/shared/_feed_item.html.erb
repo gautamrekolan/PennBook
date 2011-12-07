@@ -2,7 +2,7 @@
   <td class="gravatar">
     <%= link_to gravatar_for(feed_item.user), feed_item.user %>
   </td>
-  <td class="micropost">
+  <td class="post">
     <span class="user">
       <%= link_to feed_item.user.first_name + " " + feed_item.user.last_name, feed_item.user %>
     </span>
@@ -11,11 +11,13 @@
       Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
     </span>
   </td>
-  <% if current_user?(feed_item.user) %>
   <td>
-    <%= link_to "delete", feed_item, :method => :delete,
-                                     :confirm => "You sure?",
-                                     :title => feed_item.content %>
-  </td>
+  <% if current_user?(feed_item.user) %>
+    <%= link_to "Delete", { :controller => "posts", 
+                            :method => :destroy, 
+                            :user_id => @user.id, 
+                            :id => feed_item.id,
+                            :confirm => "Are you sure?" } %>
   <% end %>
+  </td>
 </tr>

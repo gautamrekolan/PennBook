@@ -15,10 +15,6 @@
       <%= @user.birthday %>
       </p>
 
-
-      <h3>New Post</h3>
-      <%= render 'shared/post_form' %>
-
       <hr/>
       <h3>Posts</h3>
 
@@ -26,7 +22,7 @@
         No posts found for this user.
       <% else %>
         <table class="posts" summary="User posts">
-          <%= render @posts %>
+          <%= render :partial => 'shared/feed_item', :collection => @user.posts %>
         </table>
         <%= will_paginate @posts %>
       <% end %>
