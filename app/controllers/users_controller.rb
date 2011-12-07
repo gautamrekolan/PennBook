@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate, :except => [:show, :new, :create]
+  before_filter :authenticate, :except => [:index, :show, :new, :create]
   # GET /users
   # GET /users.json
   def index

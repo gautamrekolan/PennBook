@@ -13,7 +13,7 @@ def make_users
     first_name  = Faker::Name.first_name
     last_name  = Faker::Name.last_name
     birthday = "2001-02-03"
-    email = "example-#{n+1}@railstutorial.org"
+    email = Faker::Internet.email
     password  = "password"
     User.create!(:first_name => first_name,
                  :last_name => last_name,
@@ -30,6 +30,14 @@ def make_posts
       content = Faker::Lorem.sentence(5)
       user.posts.create!(:content => content)
     end
+  end
+end
+
+def make_interest
+  50.times do
+    name = Faker::Address.city
+    description = Faker::Lorem.sentence(5)
+    interest.create!(:name => name, :description => description)
   end
 end
 
