@@ -1,6 +1,9 @@
 <% if signed_in? %>
-<%= render 'newsfeed' %>
-<%= render 'shared/stats' %>
+  <td class="main">
+    <h1 class="micropost">What's up?</h1>
+    <%= render 'shared/feed' %>
+  </td>
+  <%= render 'shared/stats' %>
 <% else %>
-<%= link_to 'New User', new_user_path %>
+  <%= link_to 'New User', new_user_path %>
 <% end %>
