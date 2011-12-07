@@ -15,6 +15,9 @@
   <%= @user.posts.count %>
 </p>
 
+<h3>New Post</h3>
+<%= render 'shared/post_form' %>
+
 <hr/>
 <h3>Posts</h3>
 
@@ -26,9 +29,6 @@
   </table>
   <%= will_paginate @posts %>
 <% end %>
-
-<hr/>
-<h3>New Post</h3>
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
