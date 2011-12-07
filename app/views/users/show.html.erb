@@ -15,14 +15,17 @@
   <%= @user.posts.count %>
 </p>
 
-<h3>New Post</h3>
+<%= link_to 'Edit', edit_user_path(@user) %> <br/>
+
+
+<h3>Status Update</h3>
 <%= render 'shared/post_form' %>
 
 <hr/>
 <h3>Posts</h3>
 
 <% if @user.posts.empty? %>
-  No posts found for this user.
+  No posts found for this user. <br/> <br/>
 <% else %>
   <table class="posts" summary="User posts">
     <%= render @posts %>
@@ -30,6 +33,4 @@
   <%= will_paginate @posts %>
 <% end %>
 
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'All Users', users_path %>
