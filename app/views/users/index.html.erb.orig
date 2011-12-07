@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+<h1>All users</h1>
+=======
 <h3>Listing users</h3>
+>>>>>>> f5ec15b46e93f319de60e0d7a1ce8542f08917a2
 
 <%= will_paginate %>
 

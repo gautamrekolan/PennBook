@@ -11,8 +11,13 @@
 
 class Post < ActiveRecord::Base
   belongs_to :user
+<<<<<<< HEAD
+
+=======
   has_many :comments, :dependent => :destroy
+  default_scope :order => 'posts.created_at DESC'
   
+>>>>>>> f5ec15b46e93f319de60e0d7a1ce8542f08917a2
   validates :content, :presence => true, :length => { :minimum => 1, :maximum => 500 }
   validates :user_id, :presence => true
 
