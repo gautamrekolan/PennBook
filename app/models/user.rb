@@ -25,13 +25,9 @@ class User < ActiveRecord::Base
                     :length   => { :maximum => 63 },
                     :format   => { :with => email_regex },
                     :uniqueness => { :case_sensitive => false}
-<<<<<<< HEAD
   validates :password, :presence     => true,
                        :confirmation => true,
                        :length       => { :within => 6..40 }
-
-=======
-                    
   validates_each :birthday do |record, attr, value|
     begin
       Date.parse(value)
@@ -41,11 +37,9 @@ class User < ActiveRecord::Base
   end
   
   # Ensure related posts are destroyed with the user
->>>>>>> 32e289dda6679f47e1556b6b90b4c6b7ad365a87
   has_many :posts, :dependent => :destroy
 
-  before_save :encrpyt_password
-
+  before_save :encrypt_password
 
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)
@@ -55,6 +49,11 @@ class User < ActiveRecord::Base
     user = find_by_email(email)
     return nil  if user.nil?
     return user if user.has_password?(submitted_password)
+  end
+
+  def self.authenticate_with_salt(id, cookie_salt)
+    user = find_by_id(id)
+    (user && user.salt == cookie_salt) ? user : nil
   end
 
   private
