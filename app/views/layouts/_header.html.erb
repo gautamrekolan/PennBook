@@ -1,4 +1,5 @@
 <header>
+<<<<<<< HEAD
   <% logo = image_tag("logo.png", :alt => "Sample App", :class => "round logo") %>
   <%= link_to logo, root_path %>
   <nav class="round">
@@ -13,4 +14,17 @@
       <% end %>
     </ul>
   </nav>
+=======
+  <div class="center">
+    <% logo = image_tag("logo.png", :alt => "Sample App", :class => "round logo") %>
+    <%= link_to logo, root_path %>
+    <nav>
+      <ul>
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Profile", '#' %></li>
+        <li><%= link_to "Account Settings", '#' %></li>
+      </ul>
+    </nav>
+  </div>
+>>>>>>> Made posts index & show work, also some styling
 </header>

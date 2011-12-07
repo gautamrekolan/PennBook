@@ -1,10 +1,11 @@
 /* Globals */
 .main {
   width: 940px;
-  margin: 10px auto;
+  margin: 0 auto;
+  padding-top: 40px;
 }
 a {
-  color: #569;
+  color: #458;
   text-decoration: none;
   -webkit-transition: color 0.1s linear;
   -moz-transition: color 0.1s linear;
@@ -20,14 +21,30 @@ a:hover {
 .field br {
   display: none;
 }
-header img.logo {
-  height: 30px;
+header {
+  position: fixed;
+  height: 35px;
+  width: 100%;
+  background: #3B5998;
+}
+header a {
+  color: #BCF;
+}
+header a:hover {
+  color: #FFF;
+}
+header .center {
+  width: 940px;
+  margin: 0 auto;
+  padding: 5px 0;
+}
+header .center img.logo {
+  height: 25px;
 }
 /* Navigation */
 nav {
   float: right;
-  background-color: white;
-  padding: 0 0.7em;
+  margin-top: 2px;
   white-space: nowrap;
 }
 nav ul {
@@ -41,7 +58,6 @@ nav ul li {
 }
 nav ul li a {
   padding: 0 5px;
-  font-weight: bold;
 }
 /* Variables
 -------------------------------------------------- */

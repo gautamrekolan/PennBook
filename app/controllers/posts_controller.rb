@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
+    @user = User.find(params[:user_id])
     @posts = Post.all
 
     respond_to do |format|
@@ -13,6 +14,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @user = User.find(params[:user_id])
     @post = Post.find(params[:id])
 
     respond_to do |format|
@@ -24,6 +26,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.json
   def new
+    @user = User.find(params[:user_id])
     @post = Post.new
 
     respond_to do |format|
@@ -34,13 +37,14 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    @user = User.find(params[:user_id])
     @post = Post.find(params[:id])
   end
 
   # POST /posts
   # POST /posts.json
   def create
-    @user = current_user
+    @user = User.find(params[:user_id])
     @post = current_user.posts.build(params[:post])
 
     respond_to do |format|
@@ -57,6 +61,7 @@ class PostsController < ApplicationController
   # PUT /posts/1
   # PUT /posts/1.json
   def update
+    @user = User.find(params[:user_id])
     @post = Post.find(params[:id])
 
     respond_to do |format|
@@ -73,6 +78,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
+    @user = User.find(params[:user_id])
     @post = Post.find(params[:id])
     @post.destroy
     

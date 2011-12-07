@@ -2,12 +2,16 @@
 
 <p>
   <b>User:</b>
-  <%= @post.user_id %>
+  <%= @user.first_name + " " + @user.last_name  %>
 </p>
 
 <p>
   <b>Content:</b>
   <%= @post.content %>
+</p>
+
+<p>
+  Posted <%= time_ago_in_words(@post.created_at) %> ago
 </p>
 
 
