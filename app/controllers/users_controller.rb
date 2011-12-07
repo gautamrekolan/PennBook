@@ -1,13 +1,10 @@
 class UsersController < ApplicationController
+  before_filter :authenticate, :except => [:show, :new, :create]
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @users }
-    end
+    @title = "All users"
+    @users = User.paginate(:page => params[:page])
   end
 
   # GET /users/1
@@ -17,11 +14,6 @@ class UsersController < ApplicationController
     @post = Post.new
     @posts = @user.posts.paginate(:page => params[:page])
     @title = @user.first_name + " " + @user.last_name
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @user }
-    end
   end
 
   # GET /users/new
@@ -38,6 +30,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    @title = "Edit user"
   end
 
   # POST /users
@@ -58,14 +51,14 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
-
-    respond_to do |format|
+    def update
+      @user = User.find(params[:id])
       if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, :notice => 'User was successfully updated.' }
-        format.json { head :ok }
+        flash[:success] = "Profile updated."
+        redirect_to @user
       else
-        format.html { render :action => "edit" }
-        format.json { render :json => @user.errors, :status => :unprocessable_entity }
+        @title = "Edit user"
+        render 'edit'
       end
     end
   end
@@ -80,5 +73,30 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url }
       format.json { head :ok }
     end
+  end
+
+  def following
+    @title = "Following"
+    @user = User.find(params[:id])
+    @users = @user.following.paginate(:page => params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @user = User.find(params[:id])
+    @users = @user.followers.paginate(:page => params[:page])
+    render 'show_follow'
+  end
+
+  private
+
+  def authenticate
+    deny_access unless signed_in?
+  end
+
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_path) unless current_user?(@user)
   end
 end

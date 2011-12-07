@@ -1,2 +1,6 @@
-<%= link_to 'New User', new_user_path %>
+<% if signed_in? %>
 <%= render 'newsfeed' %>
+<%= render 'shared/stats' %>
+<% else %>
+<%= link_to 'New User', new_user_path %>
+<% end %>
