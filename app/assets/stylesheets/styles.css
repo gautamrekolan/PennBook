@@ -1,4 +1,5 @@
-#main {
+/* Globals */
+.main {
   width: 940px;
   margin: 10px auto;
 }
@@ -19,10 +20,29 @@ a:hover {
 .field br {
   display: none;
 }
-/*
-  Bootstrap v1.1
-  Variables and mixins to bootstrap any new web development project.
-*/
+header img.logo {
+  height: 30px;
+}
+/* Navigation */
+nav {
+  float: right;
+  background-color: white;
+  padding: 0 0.7em;
+  white-space: nowrap;
+}
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+nav ul li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 0.2em 0;
+}
+nav ul li a {
+  padding: 0 5px;
+  font-weight: bold;
+}
 /* Variables
 -------------------------------------------------- */
 /* Mixins
