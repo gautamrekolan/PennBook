@@ -104,9 +104,34 @@ ul#nav li a {
 table.posts {
   width: 600px;
 }
+table.posts tr {
+  -webkit-transition: background-color 0.1s linear;
+  -moz-transition: background-color 0.1s linear;
+  transition: background-color 0.1s linear;
+}
+table.posts tr:hover {
+  background-color: whiteSmoke;
+}
 table.posts td.post span.user {
   float: left;
   width: 100%;
+}
+table.posts a.delete {
+  float: right;
+  padding: 2px 4px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-transition: none;
+  -moz-transition: none;
+  transition: none;
+}
+table.posts a.delete:hover {
+  background: #3B5998;
+  color: #FFF;
+}
+.sidebar {
+  background: whiteSmoke;
 }
 /* Variables
 -------------------------------------------------- */

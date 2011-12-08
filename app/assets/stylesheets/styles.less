@@ -41,6 +41,7 @@ header {
   }
 }
 
+
 /* Forms */
 
 .field {
@@ -97,12 +98,35 @@ ul#nav {
 table.posts {
   width: 600px;
   
+  tr {
+    .transition(background-color 0.1s linear);
+    &:hover {
+      background-color: whiteSmoke;
+    }
+  }
+  
   td.post {
     span.user {
       float: left;
       width: 100%;
     }
   }
+  
+  a.delete {
+    float: right;
+    padding: 2px 4px;
+    .border-radius(2px);
+    .transition(none);
+    
+    &:hover {
+      background: #3B5998;
+      color: #FFF;
+    }
+  }
+}
+
+.sidebar {
+  background: whiteSmoke;
 }
 
 

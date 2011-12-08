@@ -1,6 +1,4 @@
-class PostsController < ApplicationController
-
-  
+class PostsController < ApplicationController  
   # POST /posts
   # POST /posts.json
   def create

@@ -12,12 +12,12 @@
     </span>
   </td>
   <td>
+  <%= debug feed_item %>
   <% if current_user?(feed_item.user) %>
-    <%= link_to "Delete", { :controller => "posts", 
-                            :method => :destroy, 
-                            :user_id => @user.id, 
-                            :id => feed_item.id,
-                            :confirm => "Are you sure?" } %>
+    <%= link_to "X", [@user, feed_item], :method => :delete, 
+                            :confirm => "You sure?",
+                            :title => "Delete #{@user.first_name} #{@user.last_name}'s post", 
+                            :class => "delete" %>
   <% end %>
   </td>
 </tr>
