@@ -38,6 +38,7 @@
       <strong>Name</strong> <%= @title %><br />
       <strong>URL</strong> <%= link_to user_path(@user), @user %><br />
       <strong>Posts</strong> <%= @user.posts.count %>
+      <strong>Likes</strong> <%= @user.likes.count %>
       <%= render 'shared/stats' %>
     </td>
   </tr>

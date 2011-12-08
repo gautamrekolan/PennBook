@@ -6,6 +6,7 @@ namespace :db do
     make_posts
     make_relationships
     make_interests
+    make_likes
   end
 end
 
@@ -49,4 +50,11 @@ def make_interests
     description = Faker::Lorem.sentence(10)
     Interest.create!(:name => name, :description => description)
   end
+end
+
+def make_likes
+  interests = Interest.all
+  user = User.first
+  likes = interests[1..20]
+  likes.each { |like| user.like!(like) }
 end
