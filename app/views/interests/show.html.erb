@@ -10,6 +10,11 @@
     <td class="siderbar round">
       <strong>Name</strong> <%= @interest.name %> <br />
       <%= render 'shared/likes' %>
+      <% unless @users.empty? %>
+        <% @users.each do |user| %>
+          <%= link_to gravatar_for(user, :size => 30), user %>
+        <% end %>
+      <% end %>
     </td>
   </tr>
 </table>
