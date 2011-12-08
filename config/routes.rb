@@ -2,7 +2,7 @@ DemoApp::Application.routes.draw do
   resources :users do
     resources :posts
     member do
-      get :following, :followers
+      get :following, :followers, :likes
     end
   end
   resources :sessions, :only => [:new, :create, :destroy]
