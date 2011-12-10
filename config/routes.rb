@@ -1,6 +1,8 @@
 DemoApp::Application.routes.draw do
   resources :users do
-    resources :posts
+    resources :posts do
+      resources :comments
+    end
     member do
       get :following, :followers, :likes
     end

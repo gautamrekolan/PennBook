@@ -4,6 +4,9 @@ div.main {
   margin: 0 auto;
   padding-top: 40px;
 }
+div.main .flash.alert {
+  display: none;
+}
 a {
   color: #458;
   text-decoration: none;
@@ -132,6 +135,15 @@ table.posts a.delete {
 table.posts a.delete:hover {
   background: #3B5998;
   color: #FFF;
+}
+.comments {
+  margin-top: 10px;
+}
+.comments .new_comment input#comment_content {
+  width: 400px;
+}
+.comments .new_comment input.btn {
+  width: auto;
 }
 .sidebar {
   background: whiteSmoke;

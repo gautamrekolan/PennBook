@@ -1,6 +1,6 @@
 <%= form_for @post, :url => {:controller=>"posts", :action=>"create", :user_id => @user.id}, :html => {:class => "post_form"} do |f| %>
   <div class="field">
     <%= f.text_field :content, :placeholder => "Status update..." %>
-    <%= f.submit "Submit", :class =>"btn primary" %>
+    <%= f.submit "Post", :class =>"btn primary" %>
   </div>
 <% end %>

@@ -12,11 +12,10 @@
 
 class Comment < ActiveRecord::Base
   attr_accessible :content
-  
-  
   belongs_to :post
   
   validates :content, :presence => true, :length => { :minimum => 1, :maximum => 500 }
   validates :user_id, :presence => true
+  validates :commenter_id, :presence => true
   validates :post_id, :presence => true
 end
