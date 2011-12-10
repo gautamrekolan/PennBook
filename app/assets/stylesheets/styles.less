@@ -1,6 +1,6 @@
 /* Globals */
 
-.main {
+div.main {
   width: 940px;
   margin: 0 auto;
   padding-top: 40px;
@@ -47,6 +47,8 @@ header {
 .field {
     label { padding-right: 10px; }
     br { display: none; }
+    
+    #post_content { width: 625px; }
 }
 
 .field, .actions { margin-bottom: 10px; }
@@ -95,9 +97,7 @@ ul#nav {
   color: #999;
 }
 
-table.posts {
-  width: 600px;
-  
+table.posts {  
   tr {
     .transition(background-color 0.1s linear);
     &:hover {
@@ -105,10 +105,13 @@ table.posts {
     }
   }
   
-  td.post {
-    span.user {
-      float: left;
-      width: 100%;
+  td {
+    &.gravatar, &.delete { width: 55px; }
+    &.post {
+      span.user {
+        float: left;
+        width: 100%;
+      }
     }
   }
   
@@ -127,8 +130,25 @@ table.posts {
 
 .sidebar {
   background: whiteSmoke;
+  width: 180px;
 }
 
+/* Profile */
+table.profile {
+  td.main { border: none; }
+  
+  table.user {
+    td { 
+      border: none;
+      &.gravatar { padding-left: 0; }
+    }
+    h2 { width: 300px; }
+  }
+  
+  #new_post {
+    margin: 10px 0 0 0;
+  }
+}
 
 /* Variables
 -------------------------------------------------- */

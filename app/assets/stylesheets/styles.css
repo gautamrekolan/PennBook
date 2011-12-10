@@ -1,5 +1,5 @@
 /* Globals */
-.main {
+div.main {
   width: 940px;
   margin: 0 auto;
   padding-top: 40px;
@@ -57,6 +57,9 @@ header .center img.logo:hover {
 .field br {
   display: none;
 }
+.field #post_content {
+  width: 625px;
+}
 .field, .actions {
   margin-bottom: 10px;
 }
@@ -101,9 +104,6 @@ ul#nav li a {
   float: right;
   color: #999;
 }
-table.posts {
-  width: 600px;
-}
 table.posts tr {
   -webkit-transition: background-color 0.1s linear;
   -moz-transition: background-color 0.1s linear;
@@ -111,6 +111,9 @@ table.posts tr {
 }
 table.posts tr:hover {
   background-color: whiteSmoke;
+}
+table.posts td.gravatar, table.posts td.delete {
+  width: 55px;
 }
 table.posts td.post span.user {
   float: left;
@@ -132,6 +135,23 @@ table.posts a.delete:hover {
 }
 .sidebar {
   background: whiteSmoke;
+  width: 180px;
+}
+/* Profile */
+table.profile td.main {
+  border: none;
+}
+table.profile table.user td {
+  border: none;
+}
+table.profile table.user td.gravatar {
+  padding-left: 0;
+}
+table.profile table.user h2 {
+  width: 300px;
+}
+table.profile #new_post {
+  margin: 10px 0 0 0;
 }
 /* Variables
 -------------------------------------------------- */
