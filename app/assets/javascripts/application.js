@@ -7,3 +7,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function() {
+	$("table.posts tr").hover(function() {
+		$(this).children("td.delete").children("a.delete").fadeToggle('fast');
+	});
+	$("ul.comments li").hover(function() {
+		$(this).children("a.delete").fadeToggle('fast');
+	});
+});

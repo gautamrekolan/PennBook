@@ -110,18 +110,22 @@ ul#nav {
 .timestamp {
   float: right;
   color: #999;
+  margin-top: -1em;
 }
 
 table.posts {  
+  /*
   tr {
     .transition(background-color 0.1s linear);
     &:hover {
       background-color: whiteSmoke;
     }
   }
+  */
   
   td {
-    &.gravatar, &.delete { width: 55px; }
+    &.gravatar { width: 55px; }
+    &.delete { width: 20px; }
     &.post {
       span.user {
         float: left;
@@ -131,8 +135,11 @@ table.posts {
   }
   
   a.delete {
+    display: none;
     float: right;
-    padding: 2px 4px;
+    padding: 1px 5px;
+    font-size: 10px;
+    font-weight: bold;
     .border-radius(2px);
     .transition(none);
     
@@ -143,11 +150,35 @@ table.posts {
   }
 }
 
-.comments {
-  margin-top: 10px;
+ul.comments {
+  margin: 10px 0 0 0;
+  list-style: none;
+  width: 620px;
+  
+  li {
+    list-style: none;
+    background: whiteSmoke;
+    padding: 5px 25px 5px 55px;
+    .border-radius(2px);
+    float: left;
+    width: 560px;
+    border-top: solid 1px #CCC;
+    
+    img { 
+      float: left;
+      margin-left: -50px; 
+    }
+    
+    span.comment_content { 
+      max-width: 95%; 
+      color: #000;
+    }
+    
+    a.delete { margin-right: -22px; }
+  }
   
   .new_comment {
-    input#comment_content { width: 400px; }
+    input#comment_content { width: 537px; }
     input.btn { width: auto; }
   }
 }

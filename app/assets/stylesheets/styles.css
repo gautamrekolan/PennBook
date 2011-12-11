@@ -123,25 +123,35 @@ ul#nav li a {
 .timestamp {
   float: right;
   color: #999;
+  margin-top: -1em;
 }
-table.posts tr {
-  -webkit-transition: background-color 0.1s linear;
-  -moz-transition: background-color 0.1s linear;
-  transition: background-color 0.1s linear;
+table.posts {
+  /*
+  tr {
+    .transition(background-color 0.1s linear);
+    &:hover {
+      background-color: whiteSmoke;
+    }
+  }
+  */
+
 }
-table.posts tr:hover {
-  background-color: whiteSmoke;
-}
-table.posts td.gravatar, table.posts td.delete {
+table.posts td.gravatar {
   width: 55px;
+}
+table.posts td.delete {
+  width: 20px;
 }
 table.posts td.post span.user {
   float: left;
   width: 100%;
 }
 table.posts a.delete {
+  display: none;
   float: right;
-  padding: 2px 4px;
+  padding: 1px 5px;
+  font-size: 10px;
+  font-weight: bold;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
@@ -153,13 +163,37 @@ table.posts a.delete:hover {
   background: #3B5998;
   color: #FFF;
 }
-.comments {
-  margin-top: 10px;
+ul.comments {
+  margin: 10px 0 0 0;
+  list-style: none;
+  width: 620px;
 }
-.comments .new_comment input#comment_content {
-  width: 400px;
+ul.comments li {
+  list-style: none;
+  background: whiteSmoke;
+  padding: 5px 25px 5px 55px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  float: left;
+  width: 560px;
+  border-top: solid 1px #CCC;
 }
-.comments .new_comment input.btn {
+ul.comments li img {
+  float: left;
+  margin-left: -50px;
+}
+ul.comments li span.comment_content {
+  max-width: 95%;
+  color: #000;
+}
+ul.comments li a.delete {
+  margin-right: -22px;
+}
+ul.comments .new_comment input#comment_content {
+  width: 537px;
+}
+ul.comments .new_comment input.btn {
   width: auto;
 }
 .sidebar {

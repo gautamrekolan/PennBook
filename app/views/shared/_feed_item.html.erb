@@ -11,10 +11,10 @@
     
     <div class="content">
       <%= feed_item.content %>
-      <span class="timestamp"> Posted <%= time_ago_in_words(feed_item.created_at) %> ago. </span>
+      <span class="timestamp"> <%= time_ago_in_words(feed_item.created_at) %> ago </span>
     </div>
     
-    <div class="comments">
+    <ul class="comments">
       <%= form_for([feed_item.user, feed_item, feed_item.comments.build(:user_id => feed_item.user.id, :post_id => feed_item.id)], :commenter_id => current_user.id) do |f| %>
         <%= render 'shared/error_messages', :object => f.object %>
         <%= f.hidden_field :user_id, :value => feed_item.user.id %>
@@ -28,19 +28,22 @@
       
       <% feed_item.comments.each do |comment| %>
         <% if comment.content %>
+        <li>
           <% @commenter = User.find(comment.commenter_id) %>
+          <%= link_to (gravatar_for @commenter, :size => 40), @commenter %>
+          <% if current_user?(@commenter) %>
+            <%= link_to "X", [feed_item.user, feed_item, comment], :method => :delete,
+                                    :confirm => "You sure?",
+                                    :title => "Delete comment",
+                                    :class => "delete" %>
+          <% end %>
           <span><%= link_to @commenter.first_name + " " + @commenter.last_name, @commenter %></span>
-          <p><%= comment.content %></p>
-        <% end %>
-        
-        <% if current_user?(@commenter) %>
-          <%= link_to "X", [feed_item.user, feed_item, comment], :method => :delete,
-                                  :confirm => "You sure?",
-                                  :title => "Delete comment",
-                                  :class => "delete" %>
+          <span class="comment_content"><%= comment.content %></span> <br/>
+          <span class="timestamp"> <%= time_ago_in_words(feed_item.created_at) %> ago </span>
+        </li>
         <% end %>
       <% end %>
-    </div>
+    </ul>
   </td>
   
   <td class="delete">
