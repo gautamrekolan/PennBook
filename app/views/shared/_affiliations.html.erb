@@ -1,0 +1,10 @@
+<% @organization ||= current_organization %>
+<div class="organizations">
+  <table summary="Organization stats">
+    <tr>
+      <td>
+        <h4><%= @organization.users.count %> affiliate with this</h4>
+      </td>
+    </tr>
+  </table>
+</div>

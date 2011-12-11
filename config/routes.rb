@@ -1,4 +1,5 @@
 DemoApp::Application.routes.draw do
+
   resources :users do
     resources :posts do
       resources :comments
@@ -11,6 +12,8 @@ DemoApp::Application.routes.draw do
   resources :relationships, :only => [:create, :destroy]
   resources :interests
   resources :likes, :only => [:create, :destroy]
+  resources :organizations
+  resources :affiliations, :only => [:create, :destroy]
 
   match '/signup',  :to =>  'users#new'
   match '/signin',  :to =>  'sessions#new'

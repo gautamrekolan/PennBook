@@ -1,7 +1,6 @@
 <table class="profile" summary="Profile information">
   <tr>
     <td class="main">
-      
       <table class="user">
         <tr>
           <td class="gravatar"><%= gravatar_for @user, :size => 100 %></td>
@@ -18,7 +17,6 @@
       </table>
       
       <%= render 'shared/post_form' if signed_in? && current_user?(@user) %>
-
       <h3>Posts</h3>
       <p id="notice"><%= notice %></p>
       

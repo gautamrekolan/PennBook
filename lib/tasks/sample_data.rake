@@ -7,6 +7,7 @@ namespace :db do
     make_relationships
     make_interests
     make_likes
+    make_organizations
   end
 end
 
@@ -64,6 +65,13 @@ end
 def make_likes
   interests = Interest.all
   user = User.first
-  likes = interests[1..20]
-  likes.each { |like| user.like!(like) }
+  interests.each { |interest| user.like!(interest) }
+end
+
+def make_organizations
+  50.times do
+    name = Faker::Company.name
+    description = Faker::Lorem.sentence(10)
+    Organization.create!(:name => name, :description => description)
+  end
 end
