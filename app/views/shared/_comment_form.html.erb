@@ -1,0 +1,10 @@
+<%= form_for([feed_item.user, feed_item, feed_item.comments.build(:user_id => feed_item.user.id, :post_id => feed_item.id)], :commenter_id => current_user.id) do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <%= f.hidden_field :user_id, :value => feed_item.user.id %>
+  <%= f.hidden_field :post_id %>
+  <%= f.hidden_field :commenter_id, :value => current_user.id %>
+  <div class="field">
+    <%= f.text_field :content, :placeholder => "Comment..." %>
+    <%= f.submit "Comment", :class => "btn small" %>
+  </div>
+<% end %>

@@ -70,6 +70,17 @@ header .center .search input:focus {
   -moz-box-shadow: 0px 0px 5px #ccccff;
   box-shadow: 0px 0px 5px #ccccff;
 }
+/* Home Page */
+h1.welcome {
+  width: 700px;
+  float: left;
+}
+.mini-signin {
+  float: right;
+}
+.mini-signin input[type='submit'] {
+  float: right;
+}
 /* Forms */
 .field label {
   padding-right: 10px;
@@ -145,6 +156,9 @@ table.posts td.delete {
 table.posts td.post span.user {
   float: left;
   width: 100%;
+}
+table.posts td.post span.user div.content {
+  min-height: 45px;
 }
 table.posts a.delete {
   display: none;

@@ -7,7 +7,18 @@
   </td>
   <%= render 'shared/stats' %>
 <% else %>
-  <!-- Create a splash page to go here -->
-  <h3><%= link_to "Sign in", signin_path %></h3>
-  <%= link_to 'New User', new_user_path %>
+  <br/>
+  
+  <div class="mini-signin">
+  <%= form_for(:session, :url => sessions_path) do |f| %>
+      <div class="field"><%= f.text_field :email, :placeholder => 'Email' %></div>
+      <div class="field"><%= f.password_field :password, :placeholder => 'Password' %></div>
+      <%= f.submit "Sign in", :class =>"btn primary" %>
+  <% end %>
+  </div>
+  
+  <h1 class="welcome">Welcome to PennBook!</h1> 
+  <%= link_to 'New User? Sign up now!', new_user_path %>
+  <br/> <br/> <br/>
+  
 <% end %>
