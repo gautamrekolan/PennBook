@@ -1,0 +1,11 @@
+<h3>All organizations</h3>
+
+<%= will_paginate %>
+
+<ul class="organizations">
+  <% @organizations.each do |organization| %>
+    <%= render organization %>
+  <% end %>
+</ul>
+
+<% will_paginate %>
