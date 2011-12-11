@@ -13,6 +13,7 @@ DemoApp::Application.routes.draw do
   resources :interests
   resources :likes, :only => [:create, :destroy]
   resources :organizations
+  resources :affiliations, :only => [:create, :destroy]
 
   match '/signup',  :to =>  'users#new'
   match '/signin',  :to =>  'sessions#new'

@@ -25,6 +25,8 @@ class User < ActiveRecord::Base
                                    :class_name => "Relationship",
                                    :dependent => :destroy
   has_many :followers, :through => :reverse_relationships, :source => :follower
+  has_many :affiliations
+  has_many :organizations, :through => :affiliations
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -91,6 +93,19 @@ class User < ActiveRecord::Base
   def unlike!(interest)
     likes.find_by_interest_id(interest).destroy
   end
+
+  def affiliates?(organization)
+    affiliations.find_by_organization_id(organization)
+  end
+
+  def affiliate!(organization)
+    affiliations.create!(:organization_id => organization.id)
+  end
+
+  def unaffiliate!(organization)
+    affiliations.find_by_organization_id(organization).destroy
+  end
+
 
   def self.search(search)
     find(:all, :conditions => ['first_name LIKE ? OR last_name LIKE ? OR email LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%"])

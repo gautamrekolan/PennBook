@@ -7,6 +7,7 @@ class OrganizationsController < ApplicationController
   def show
     @organization = Organization.find(params[:id])
     @title = @organization.name
+    @users = @organization.users
   end
 
 end

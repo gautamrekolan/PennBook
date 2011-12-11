@@ -1,0 +1,7 @@
+<div id="follow form">
+  <% if current_user.affiliates?(@organization) %>
+    <%= render 'unaffiliate' %>
+  <% else %>
+    <%= render 'affiliate' %>
+  <% end %>
+</div>

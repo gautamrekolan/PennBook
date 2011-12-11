@@ -3,6 +3,16 @@
     <td>
       <h3><%= @organization.name %></h3>
       <p><%= @organization.description %></p>
+      <%= render 'affiliate_form' if signed_in? %>
+    </td>
+    <td class="siderbar round">
+      <strong>Name</strong> <%= @organization.name %> <br />
+      <%= render 'shared/affiliations' %>
+      <% unless @users.empty? %>
+        <% @users.each do |user| %>
+          <%= link_to gravatar_for(user, :size => 30), user %>
+        <% end %>
+      <% end %>
     </td>
   </tr>
 </table>
