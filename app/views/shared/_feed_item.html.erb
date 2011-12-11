@@ -28,11 +28,12 @@
       
       <% feed_item.comments.each do |comment| %>
         <% if comment.content %>
-        <span><%= link_to comment.user_id, comment.user_id %></span>
-        <p><%= comment.content %></p>
+          <% @commenter = User.find(comment.commenter_id) %>
+          <span><%= link_to @commenter.first_name + " " + @commenter.last_name, @commenter %></span>
+          <p><%= comment.content %></p>
         <% end %>
         
-        <% if current_user?(feed_item.user) %>
+        <% if current_user?(@commenter) %>
           <%= link_to "X", [feed_item.user, feed_item, comment], :method => :delete,
                                   :confirm => "You sure?",
                                   :title => "Delete comment",
