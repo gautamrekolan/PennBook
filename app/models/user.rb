@@ -91,6 +91,10 @@ class User < ActiveRecord::Base
   def unlike!(interest)
     likes.create!(:interest_id => interest.id).destroy
   end
+  
+  def self.search(search)
+    find(:all, :conditions => ['first_name LIKE ? OR last_name LIKE ? OR email LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%"])
+  end
 
   private
 

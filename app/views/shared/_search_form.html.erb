@@ -1,0 +1,8 @@
+<%= form_tag users_path, :method => 'get' do %>
+  <% if params[:search] %>
+    <%= text_field_tag :search, params[:search] %>
+  <% else %>
+    <%= text_field_tag :search, params[:search], :placeholder => 'Search users' %>
+  <% end %>
+  <% submit_tag "Search", :name => nil %>
+<% end %>

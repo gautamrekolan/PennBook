@@ -1,11 +1,13 @@
 <h3>Listing users</h3>
 
-<%= will_paginate %>
+<% if not params[:search] %>
+<%= will_paginate @users %>
+<% end %>
 
 <ul class="users">
-  <% @users.each do |user| %>
-    <%= render user %>
-  <% end %>
+  <%= render @users %>
 </ul>
 
-<%= will_paginate %>
+<% if not params[:search] %>
+<%= will_paginate @users %>
+<% end %>

@@ -53,6 +53,23 @@ header .center img.logo:hover {
   -moz-opacity: 1;
   opacity: 1;
 }
+header .center .search {
+  position: absolute;
+  width: 220px;
+  top: 5px;
+  margin-left: 400px;
+}
+header .center .search form {
+  margin: 0;
+}
+header .center .search input {
+  height: 15px;
+}
+header .center .search input:focus {
+  -webkit-box-shadow: 0px 0px 5px #ccccff;
+  -moz-box-shadow: 0px 0px 5px #ccccff;
+  box-shadow: 0px 0px 5px #ccccff;
+}
 /* Forms */
 .field label {
   padding-right: 10px;

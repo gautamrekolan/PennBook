@@ -2,6 +2,13 @@
   <div class="center">
     <% logo = image_tag("logo.png", :alt => "Sample App", :class => "logo") %>
     <%= link_to logo, root_path %>
+    
+    <div class="search">
+    <% if signed_in? %>
+      <%= render "shared/search_form" %>
+    <% end %>
+    </div>
+    
     <ul id="nav">
       <li><%= link_to "Home", root_path %></li>
       <% if signed_in? %>
