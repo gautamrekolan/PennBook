@@ -3,7 +3,11 @@ class UsersController < ApplicationController
 
   def index
     @title = "All users"
-    @users = User.paginate(:page => params[:page])
+    if (params[:search])
+      @users = User.search(params[:search])
+    else
+      @users = User.paginate(:page => params[:page])
+    end
   end
 
   def show
@@ -27,7 +31,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = "Welcome to PennBook!"
       redirect_to @user
     else
       @title = "Sign up"

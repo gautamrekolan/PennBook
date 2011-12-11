@@ -35,6 +35,15 @@ def make_posts
   end
 end
 
+def make_comments
+  User.all(:limit => 6).posts.each do |post|
+    2.times do
+      content = Faker::Lorem.sentence(5)
+      post.comments.create!(:content => content)
+    end
+  end
+end
+
 def make_relationships
   users = User.all
   user  = users.first

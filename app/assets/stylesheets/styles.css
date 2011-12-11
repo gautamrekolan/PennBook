@@ -1,8 +1,11 @@
 /* Globals */
-.main {
+div.main {
   width: 940px;
   margin: 0 auto;
   padding-top: 40px;
+}
+div.main .flash.alert {
+  display: none;
 }
 a {
   color: #458;
@@ -50,12 +53,32 @@ header .center img.logo:hover {
   -moz-opacity: 1;
   opacity: 1;
 }
+header .center .search {
+  position: absolute;
+  width: 220px;
+  top: 5px;
+  margin-left: 400px;
+}
+header .center .search form {
+  margin: 0;
+}
+header .center .search input {
+  height: 15px;
+}
+header .center .search input:focus {
+  -webkit-box-shadow: 0px 0px 5px #ccccff;
+  -moz-box-shadow: 0px 0px 5px #ccccff;
+  box-shadow: 0px 0px 5px #ccccff;
+}
 /* Forms */
 .field label {
   padding-right: 10px;
 }
 .field br {
   display: none;
+}
+.field #post_content {
+  width: 625px;
 }
 .field, .actions {
   margin-bottom: 10px;
@@ -96,19 +119,102 @@ ul#nav li {
 ul#nav li a {
   padding: 0 5px;
 }
+/* Posts */
+.timestamp {
+  float: right;
+  color: #999;
+  margin-top: -1em;
+}
 table.posts {
-  width: 600px;
+  /*
+  tr {
+    .transition(background-color 0.1s linear);
+    &:hover {
+      background-color: whiteSmoke;
+    }
+  }
+  */
+
 }
-table.posts td.post {
-  padding-left: 50px;
+table.posts td.gravatar {
+  width: 55px;
 }
-table.posts td.post .thumb {
-  float: left;
-  margin-left: -50px;
+table.posts td.delete {
+  width: 20px;
 }
 table.posts td.post span.user {
   float: left;
   width: 100%;
+}
+table.posts a.delete {
+  display: none;
+  float: right;
+  padding: 1px 5px;
+  font-size: 10px;
+  font-weight: bold;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-transition: none;
+  -moz-transition: none;
+  transition: none;
+}
+table.posts a.delete:hover {
+  background: #3B5998;
+  color: #FFF;
+}
+ul.comments {
+  margin: 10px 0 0 0;
+  list-style: none;
+  width: 620px;
+}
+ul.comments li {
+  list-style: none;
+  background: whiteSmoke;
+  padding: 5px 25px 5px 55px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  float: left;
+  width: 560px;
+  border-top: solid 1px #CCC;
+}
+ul.comments li img {
+  float: left;
+  margin-left: -50px;
+}
+ul.comments li span.comment_content {
+  max-width: 95%;
+  color: #000;
+}
+ul.comments li a.delete {
+  margin-right: -22px;
+}
+ul.comments .new_comment input#comment_content {
+  width: 537px;
+}
+ul.comments .new_comment input.btn {
+  width: auto;
+}
+.sidebar {
+  background: whiteSmoke;
+  width: 180px;
+}
+/* Profile */
+table.profile td.main {
+  border: none;
+}
+table.profile table.user td {
+  border: none;
+}
+table.profile table.user td.gravatar {
+  padding-left: 0;
+}
+table.profile table.user h2 {
+  width: 300px;
+}
+table.profile #new_post {
+  margin: 10px 0 0 0;
 }
 /* Variables
 -------------------------------------------------- */

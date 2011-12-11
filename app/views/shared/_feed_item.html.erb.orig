@@ -48,10 +48,13 @@
   
   <td class="delete">
   <% if current_user?(feed_item.user) %>
+<<<<<<< HEAD
+=======
     <%= link_to "X", [@user, feed_item], :method => :delete,
                             :confirm => "You sure?",
                             :title => "Delete #{@user.first_name} #{@user.last_name}'s post",
                             :class => "delete" %>
+>>>>>>> 7ee1999d326a69f6ac84d7b08cdfc416b8cd2597
   <% end %>
   </td>
 </tr>

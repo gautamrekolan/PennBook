@@ -1,5 +1,5 @@
 <% unless @posts.empty? %>
-  <table class="microposts" summary="User microposts">
+  <table class="posts" summary="News feed posts">
     <%= render :partial => 'shared/feed_item', :collection => @posts %>
   </table>
   <%= will_paginate @posts %>

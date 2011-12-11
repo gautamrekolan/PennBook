@@ -1,10 +1,4 @@
-class PostsController < ApplicationController
-  # GET /posts/1/edit
-  def edit
-    @user = User.find(params[:user_id])
-    @post = Post.find(params[:id])
-  end
-
+class PostsController < ApplicationController  
   # POST /posts
   # POST /posts.json
   def create
@@ -30,7 +24,7 @@ class PostsController < ApplicationController
     @post.destroy
     
     respond_to do |format|
-      format.html { redirect_to posts_url }
+      format.html { redirect_to @user, :notice => 'Post was successfully deleted.' }
       format.json { head :ok }
     end
   end

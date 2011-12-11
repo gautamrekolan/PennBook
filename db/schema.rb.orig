@@ -11,9 +11,10 @@
 # It's strongly recommended to check this file into your version control system.
 
 <<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20111207093438) do
+ActiveRecord::Schema.define(:version => 20111207130903) do
 =======
-ActiveRecord::Schema.define(:version => 20111207083933) do
+ActiveRecord::Schema.define(:version => 20111210212251) do
+>>>>>>> 7ee1999d326a69f6ac84d7b08cdfc416b8cd2597
 
   create_table "comments", :force => true do |t|
     t.string   "content"
@@ -21,8 +22,8 @@ ActiveRecord::Schema.define(:version => 20111207083933) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "commenter_id"
   end
->>>>>>> f5ec15b46e93f319de60e0d7a1ce8542f08917a2
 
   create_table "interests", :force => true do |t|
     t.string   "description"
@@ -30,6 +31,13 @@ ActiveRecord::Schema.define(:version => 20111207083933) do
     t.datetime "updated_at"
     t.string   "interest"
     t.string   "name"
+  end
+
+  create_table "likes", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "interest_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "posts", :force => true do |t|

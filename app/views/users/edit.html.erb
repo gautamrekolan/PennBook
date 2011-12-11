@@ -22,12 +22,15 @@
     <%= f.label :password_confirmation, "Confirmation" %><br />
     <%= f.password_field :password_confirmation %>
   </div>
+  <div class="field">
+    <%= f.label "Change avatar" %>
+    <%= link_to (gravatar_for @user), "http://gravatar.com/emails" %>
+  </div>
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Update", :class => "btn success" %>
+    <%= link_to "Delete User", @user, :method => :delete, 
+                                    :confirm => "You sure?",
+                                    :title => "Delete #{@user.first_name} #{@user.last_name}", 
+                                    :class => "btn danger" %>
   </div>
 <% end %>
-
-<div>
-  <%= gravatar_for @user %>
-  <a href="http://gravatar.com/emails">change</a>
-</div>
