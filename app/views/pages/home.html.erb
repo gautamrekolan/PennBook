@@ -1,11 +1,17 @@
 <% if signed_in? %>
-  <td class="main">
-    <h3>Status Update</h3>
-    <%= render 'shared/post_form' %>
-    <h3>News Feed</h3>
-    <%= render 'shared/feed' %>
-  </td>
-  <%= render 'shared/stats' %>
+  <table class="home">
+    <tbody>
+    <tr>
+      <td class="main">
+        <h3>Status Update</h3>
+        <%= render 'shared/post_form' %>
+        <h3>News Feed</h3>
+        <%= render 'shared/feed' %>
+      </td>
+      <%= render 'shared/sidebar' %>
+    </tr>
+    </tbody>
+  </table>
 <% else %>
   <br/>
   

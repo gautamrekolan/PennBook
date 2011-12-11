@@ -70,6 +70,9 @@ header .center .search input:focus {
   -moz-box-shadow: 0px 0px 5px #ccccff;
   box-shadow: 0px 0px 5px #ccccff;
 }
+td.main {
+  border: none;
+}
 /* Home Page */
 h1.welcome {
   width: 700px;
@@ -89,7 +92,7 @@ h1.welcome {
   display: none;
 }
 .field #post_content {
-  width: 625px;
+  width: 620px;
 }
 .field, .actions {
   margin-bottom: 10px;
@@ -134,36 +137,31 @@ ul#nav li a {
 .timestamp {
   float: right;
   color: #999;
-  margin-top: -1em;
+  margin: -1em 1em 0 0;
 }
-table.posts {
-  /*
-  tr {
-    .transition(background-color 0.1s linear);
-    &:hover {
-      background-color: whiteSmoke;
-    }
-  }
-  */
-
+table.posts tr {
+  float: left;
+  width: 730px;
 }
 table.posts td.gravatar {
   width: 55px;
 }
 table.posts td.delete {
   width: 20px;
+  padding: 10px 0;
 }
 table.posts td.post span.user {
   float: left;
   width: 100%;
 }
-table.posts td.post span.user div.content {
+table.posts td.post div.content {
   min-height: 45px;
 }
 table.posts a.delete {
   display: none;
-  float: right;
+  position: absolute;
   padding: 1px 5px;
+  margin-left: -12px;
   font-size: 10px;
   font-weight: bold;
   -webkit-border-radius: 2px;
@@ -178,7 +176,7 @@ table.posts a.delete:hover {
   color: #FFF;
 }
 ul.comments {
-  margin: 10px 0 0 0;
+  margin: 2px 0 0 0;
   list-style: none;
   width: 620px;
 }
@@ -193,6 +191,9 @@ ul.comments li {
   width: 560px;
   border-top: solid 1px #CCC;
 }
+ul.comments li:first-child {
+  margin-top: 8px;
+}
 ul.comments li img {
   float: left;
   margin-left: -50px;
@@ -201,11 +202,20 @@ ul.comments li span.comment_content {
   max-width: 95%;
   color: #000;
 }
+ul.comments li span.timestamp {
+  margin-right: 0.8em;
+}
 ul.comments li a.delete {
   margin-right: -22px;
+  float: right;
+  position: relative;
+}
+ul.comments .new_comment {
+  float: left;
+  margin: 10px 0 0 5px;
 }
 ul.comments .new_comment input#comment_content {
-  width: 537px;
+  width: 520px;
 }
 ul.comments .new_comment input.btn {
   width: auto;
@@ -215,9 +225,6 @@ ul.comments .new_comment input.btn {
   width: 180px;
 }
 /* Profile */
-table.profile td.main {
-  border: none;
-}
 table.profile table.user td {
   border: none;
 }

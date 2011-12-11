@@ -1,4 +1,6 @@
-<% unless @posts.empty? %>
+<% if @posts.empty? %>
+  No posts found in your news feed.
+<% else %>
   <table class="posts" summary="News feed posts">
     <%= render :partial => 'shared/feed_item', :collection => @posts %>
   </table>

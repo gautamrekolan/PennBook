@@ -10,11 +10,7 @@
         <%= will_paginate @interests %>
       <% end %>
     </td>
-    <td class="sidebar round">
-      <strong>Name</strong> <%= @user.first_name %> <%= @user.last_name %><br />
-      <strong>URL</strong> <%= link_to user_path(@user), @user %><br />
-      <strong>Posts</strong> <%= @user.posts.count %>
-      <%= render 'shared/stats' %>
-    </td>
+    
+    <%= render 'shared/sidebar' %>
   </tr>
 </table>

@@ -1,11 +1,9 @@
 <h3>Listing interests</h3>
 
-<%= will_paginate %>
+<%= will_paginate @interests %>
 
 <ul class="interest">
-  <% @interests.each do |interest| %>
-    <%= render interest %>
-  <% end %>
+  <%= render @interests %>
 </ul>
 
-<%= will_paginate %>
+<%= will_paginate @interests %>

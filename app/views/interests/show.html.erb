@@ -1,11 +1,12 @@
 <table>
   <tr>
-    <td>
+    <td class="main">
       <h3><%= @interest.name %></h3>
       <p><%= @interest.description %></p>
       <%= render 'like_form' if signed_in? %>
     </td>
-    <td class="siderbar round">
+    
+    <td class="sidebar">
       <strong>Name</strong> <%= @interest.name %> <br />
       <%= render 'shared/likes' %>
       <% unless @users.empty? %>
