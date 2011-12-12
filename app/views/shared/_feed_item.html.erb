@@ -3,7 +3,7 @@
     <%= link_to gravatar_for(feed_item.user), feed_item.user %>
   </td>
   
-  <td class="post">
+  <td class="post" data-time="<%= feed_item.created_at.to_i %>">
     <span class="user">
       <%= link_to feed_item.user.first_name + " " + 
           feed_item.user.last_name, feed_item.user %>

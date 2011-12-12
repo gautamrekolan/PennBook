@@ -3,7 +3,7 @@ class PagesController < ApplicationController
     @title = "Home"
     if signed_in?
       @user = current_user
-      @title = @user.first_name + " " + @user.last_name
+      @title = @user.name
       @post = Post.new
       @posts = current_user.feed.paginate(:page => params[:page])
     end
