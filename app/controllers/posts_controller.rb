@@ -1,6 +1,9 @@
 class PostsController < ApplicationController  
-  # POST /posts
-  # POST /posts.json
+  def index
+    @user = current_user
+    @posts = @user.feed.where("created_at > ?", Time.at(params[:after].to_i + 1))
+  end
+
   def create
     @user = User.find(params[:user_id])
     if params[:post][:poster_id]
@@ -20,8 +23,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # DELETE /posts/1
-  # DELETE /posts/1.json
   def destroy
     @user = User.find(params[:user_id])
     @post = Post.find(params[:id])

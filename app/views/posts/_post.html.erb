@@ -1,13 +1,59 @@
 <tr>
-  <td class="post">
-    <div class="thumb"><%= gravatar_for post.user, :size => 40 %></div>
-    <span class="user"><%= link_to post.user.first_name + " " + post.user.last_name, post.user %></span>
-    <span class="content"><%= post.content %></span>
-    <% if session[:user_id] == post.user_id %>
-      <span style="float: right;"><%= link_to "Delete", [@user, post], :method => :delete %></span>
-    <% end %>
-    <span class="timestamp" style="float: right; color: #999;">
-      Posted <%= time_ago_in_words(post.created_at) %> ago
+  <td class="gravatar">
+    <%= link_to gravatar_for(post.user), post.user %>
+  </td>
+  
+  <td class="post" data-time="<%= post.created_at.to_i %>">
+    <span class="user">
+      <%= link_to post.user.first_name + " " + 
+          post.user.last_name, post.user %>
     </span>
+    
+    <div class="content">
+      <%= post.content %>
+      <span class="timestamp"> <%= time_ago_in_words(post.created_at) %> ago </span>
+    </div>
+    
+    <ul class="comments">
+      <% post.comments.each do |comment| %>
+        <% if comment.content %>
+        <li>
+          <% @commenter = User.find(comment.commenter_id) %>
+          <%= link_to (gravatar_for @commenter, :size => 40), @commenter %>
+          <% if current_user?(@commenter) %>
+            <%= link_to "X", [post.user, post, comment], :method => :delete,
+                                    :confirm => "You sure?",
+                                    :title => "Delete comment",
+                                    :class => "delete" %>
+          <% end %>
+          <span><%= link_to @commenter.first_name + " " + @commenter.last_name, @commenter %></span>
+          <span class="comment_content"><%= comment.content %></span> <br/>
+          <span class="timestamp"> <%= time_ago_in_words(comment.created_at) %> ago </span>
+        </li>
+        <% end %>
+      <% end %>
+      
+      <% if signed_in? %>
+        <%= form_for([post.user, post, post.comments.build(:user_id => post.user.id, :post_id => post.id)], :commenter_id => current_user.id) do |f| %>
+          <%= render 'shared/error_messages', :object => f.object %>
+          <%= f.hidden_field :user_id, :value => post.user.id %>
+          <%= f.hidden_field :post_id %>
+          <%= f.hidden_field :commenter_id, :value => current_user.id %>
+          <div class="field">
+            <%= f.text_field :content, :placeholder => "Comment..." %>
+            <%= f.submit "Comment", :class => "btn small" %>
+          </div>
+        <% end %>
+      <% end %>
+    </ul>
+  </td>
+  
+  <td class="delete">
+  <% if current_user?(post.user) %>
+    <%= link_to "X", [@user, post], :method => :delete,
+                            :confirm => "You sure?",
+                            :title => "Delete #{@user.first_name} #{@user.last_name}'s post",
+                            :class => "delete" %>
+  <% end %>
   </td>
 </tr>

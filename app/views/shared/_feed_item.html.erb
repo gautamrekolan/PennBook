@@ -9,7 +9,7 @@
     <%= link_to gravatar_for(@poster), @poster %>
   </td>
   
-  <td class="post">
+  <td class="post" data-time="<%= feed_item.created_at.to_i %>">
     <span class="user">
       <%= link_to @poster.first_name + " " + @poster.last_name, @poster %>
       <% if feed_item.poster_id %>

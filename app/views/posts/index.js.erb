@@ -1,0 +1,3 @@
+<% unless @posts.empty? %>
+  $("#posts").prepend("<%=raw escape_javascript(render @posts) %>")
+<% end %>

@@ -9,10 +9,25 @@
 //= require_tree .
 
 $(document).ready(function() {
-	$("table.posts tr").hover(function() {
-		$(this).children("td.delete").children("a.delete").fadeToggle('fast');
-	});
-	$("ul.comments li").hover(function() {
-		$(this).children("a.delete").fadeToggle('fast');
-	});
+  $("table.posts tr").hover(function() {
+    $(this).children("td.delete").children("a.delete").fadeToggle('fast');
+  });
+  $("ul.comments li").hover(function() {
+    $(this).children("a.delete").fadeToggle('fast');
+  });
 });
+
+$(function() {
+  if ($("#posts").length > 0) {
+    setTimeout(updateNewsFeed, 10000);
+  }
+})
+
+function updateNewsFeed() {
+  // We use setTimeout instead of setInterval in case the request takes time
+  // process and we end up polling more frequently than we can handle them
+  var user_id = $("#posts").attr("data-id");
+  var after = $(".post:first").attr("data-time");
+  $.getScript("/users/" + user_id + "/posts.js?user_id=" + user_id + "&after=" + after)
+  setTimeout(updateNewsFeed, 10000);
+}
