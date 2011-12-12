@@ -51,6 +51,10 @@ class User < ActiveRecord::Base
 
   before_save :encrypt_password
 
+  def name()
+    self.first_name + " " + self.last_name
+  end
+
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)
   end
@@ -72,6 +76,7 @@ class User < ActiveRecord::Base
 
   def follow!(followed)
     relationships.create!(:followed_id => followed.id)
+    posts.create!(:content => self.name + " is now following " + followed.name)
   end
 
   def unfollow!(followed)
