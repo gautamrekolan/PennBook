@@ -6,7 +6,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require_directory .
 
 $(document).ready(function() {
   $("table.posts tr").hover(function() {
