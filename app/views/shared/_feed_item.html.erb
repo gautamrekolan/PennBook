@@ -1,12 +1,20 @@
+<% if feed_item.poster_id %>
+  <% @poster = User.find(feed_item.poster_id) %>
+<% else %>
+  <% @poster = feed_item.user %>
+<% end %>
+
 <tr>
   <td class="gravatar">
-    <%= link_to gravatar_for(feed_item.user), feed_item.user %>
+    <%= link_to gravatar_for(@poster), @poster %>
   </td>
   
   <td class="post">
     <span class="user">
-      <%= link_to feed_item.user.first_name + " " + 
-          feed_item.user.last_name, feed_item.user %>
+      <%= link_to @poster.first_name + " " + @poster.last_name, @poster %>
+      <% if feed_item.poster_id %>
+        &#8594; <%= link_to feed_item.user.first_name + " " + feed_item.user.last_name, feed_item.user %>
+      <% end %>
     </span>
     
     <div class="content">
@@ -49,7 +57,7 @@
   </td>
   
   <td class="delete">
-  <% if current_user?(feed_item.user) %>
+  <% if current_user?(feed_item.user) or current_user?(@poster) %>
     <%= link_to "X", [@user, feed_item], :method => :delete,
                             :confirm => "You sure?",
                             :title => "Delete #{@user.first_name} #{@user.last_name}'s post",

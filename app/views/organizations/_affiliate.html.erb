@@ -1,5 +1,5 @@
 <%= form_for current_user.affiliations.
                           build(:organization_id => @organization.id) do |f| %>
   <div><%= f.hidden_field :organization_id %></div>
-  <div class="actions"><%= f.submit "Like", :class => 'btn success' %></div>
+  <div class="actions"><%= f.submit "Affiliate", :class => 'btn success' %></div>
 <% end %>

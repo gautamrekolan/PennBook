@@ -57,7 +57,7 @@ header .center .search {
   position: absolute;
   width: 220px;
   top: 5px;
-  margin-left: 400px;
+  margin-left: 120px;
 }
 header .center .search form {
   margin: 0;
@@ -234,8 +234,40 @@ table.profile table.user td.gravatar {
 table.profile table.user h2 {
   width: 300px;
 }
+table.profile table.user #follow_form {
+  margin-top: 10px;
+}
 table.profile #new_post {
   margin: 10px 0 0 0;
+}
+ul.users li {
+  display: inline-block;
+  width: 207px;
+  height: 33px;
+  margin: 0 8px 2px 0;
+  padding: 5px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-transition-property: background-color 0.1s linear, box-shadow 0.1s linear;
+  -webkit-transition-duration: 0.15s, 0.15s;
+  -webkit-transition-timing-function: linear, linear;
+  -moz-transition-property: background-color 0.1s linear, box-shadow 0.1s linear;
+  -moz-transition-duration: 0.15s, 0.15s;
+  -moz-transition-timing-function: linear, linear;
+  transition-property: background-color 0.1s linear, box-shadow 0.1s linear;
+  transition-duration: 0.15s, 0.15s;
+  transition-timing-function: linear, linear;
+}
+ul.users li:hover {
+  background-color: whiteSmoke;
+  -webkit-box-shadow: 0px 0px 3px #aaaaaa;
+  -moz-box-shadow: 0px 0px 3px #aaaaaa;
+  box-shadow: 0px 0px 3px #aaaaaa;
+}
+ul.users li a, ul.users li img {
+  float: left;
+  margin-right: 5px;
 }
 /* Variables
 -------------------------------------------------- */

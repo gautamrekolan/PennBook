@@ -1,6 +1,6 @@
 <td class="sidebar">
   <strong>Name</strong> <%= @title %><br />
   <strong><%= link_to 'Posts ', @user %></strong> <%= @user.posts.count %> <br/>
-  <strong><%= link_to 'Likes ', @user %></strong> <%= @user.likes.count %>
+  <strong><%= link_to 'Likes ', user_path(@user) + '/likes' %></strong> <%= @user.likes.count %>
   <%= render 'shared/stats' %>
 </td>
