@@ -1,7 +1,7 @@
 class PostsController < ApplicationController  
   def index
-    @posts = Post.where("user_id = ? and created_at > ?", params[:user_id], Time.at(params[:after].to_i + 1))
     @user = current_user
+    @posts = @user.feed.where("created_at > ?", Time.at(params[:after].to_i + 1))
   end
 
   def create

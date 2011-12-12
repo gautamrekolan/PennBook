@@ -28,6 +28,6 @@ function updateNewsFeed() {
   // process and we end up polling more frequently than we can handle them
   var user_id = $("#posts").attr("data-id");
   var after = $(".post:first").attr("data-time");
-  $.getScript("/users/1/posts.js?user_id=" + user_id + "&after=" + after)
+  $.getScript("/users/" + user_id + "/posts.js?user_id=" + user_id + "&after=" + after)
   setTimeout(updateNewsFeed, 10000);
 }
