@@ -51,6 +51,10 @@ class User < ActiveRecord::Base
 
   before_save :encrypt_password
 
+  def name()
+    self.first_name + " " + self.last_name
+  end
+
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)
   end
@@ -72,6 +76,7 @@ class User < ActiveRecord::Base
 
   def follow!(followed)
     relationships.create!(:followed_id => followed.id)
+    posts.create!(:content => self.name + " is now following " + followed.name)
   end
 
   def unfollow!(followed)
@@ -88,6 +93,7 @@ class User < ActiveRecord::Base
 
   def like!(interest)
     likes.create!(:interest_id => interest.id)
+    posts.create!(:content => self.name + " likes " + interest.name)
   end
 
   def unlike!(interest)
@@ -100,6 +106,7 @@ class User < ActiveRecord::Base
 
   def affiliate!(organization)
     affiliations.create!(:organization_id => organization.id)
+    posts.create!(:content => self.name + " joined " + organization.name)
   end
 
   def unaffiliate!(organization)
