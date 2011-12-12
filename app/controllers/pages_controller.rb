@@ -17,4 +17,10 @@ class PagesController < ApplicationController
     @title = "Help"
   end
 
+  def visualize
+    if signed_in?
+      @user = current_user
+      @title = @user.first_name + " " + @user.last_name
+    end
+  end
 end

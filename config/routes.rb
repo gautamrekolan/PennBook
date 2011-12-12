@@ -21,6 +21,7 @@ DemoApp::Application.routes.draw do
 
   match '/about', :to => 'pages#about'
   match '/help', :to => 'pages#help'
+  match '/visualize', :to => 'pages#visualize'
   
   root :to => 'pages#home'
   # The priority is based upon order of creation:
