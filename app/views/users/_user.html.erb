@@ -1,4 +1,4 @@
 <li>
-<%= gravatar_for user, :size => 30 %>
+<%= link_to (gravatar_for user, :size => 30), user %>
 <%= link_to user.first_name + " " + user.last_name, user %>
 </li>

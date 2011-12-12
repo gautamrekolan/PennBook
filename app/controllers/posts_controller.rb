@@ -6,7 +6,11 @@ class PostsController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    @post = current_user.posts.build(params[:post])
+    if params[:post][:poster_id]
+      @post = @user.posts.build(params[:post])
+    else
+      @post = current_user.posts.build(params[:post])
+    end
 
     respond_to do |format|
       if @post.save

@@ -1,11 +1,15 @@
 <h3>Listing users</h3>
 
-<% if not params[:search] %>
-<%= will_paginate @users %>
+<% if params[:search] %>
+  <p><strong>Filter: </strong> <%= params[:search] %></p>
 <% end %>
 
 <ul class="users">
-  <%= render @users %>
+  <% if @users.empty? %>
+    Sorry, no users found.
+  <% else %>
+    <%= render @users %>
+  <% end %>
 </ul>
 
 <% if not params[:search] %>

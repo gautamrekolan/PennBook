@@ -1,6 +1,16 @@
-<%= form_for @post, :url => {:controller=>"posts", :action=>"create", :user_id => @user.id}, :html => {:class => "post_form"} do |f| %>
-  <div class="field">
-    <%= f.text_field :content, :placeholder => "Status update..." %>
-    <%= f.submit "Post", :class =>"btn primary" %>
-  </div>
+<% if current_user?(@user) %>
+  <%= form_for @post, :url => {:controller=>"posts", :action=>"create", :user_id => @user.id}, :html => {:class => "post_form"} do |f| %>
+    <div class="field">
+      <%= f.text_field :content, :placeholder => "Status Update..." %>
+      <%= f.submit "Post", :class =>"btn primary" %>
+    </div>
+  <% end %>
+<% else %>
+  <%= form_for @post, :url => {:controller=>"posts", :action=>"create", :user_id => @user.id, :poster_id => current_user.id}, :html => {:class => "post_form"} do |f| %>
+    <%= f.hidden_field :poster_id, :value => current_user.id %>
+    <div class="field">
+      <%= f.text_field :content, :placeholder => "Post something..." %>
+      <%= f.submit "Post", :class =>"btn primary" %>
+    </div>
+  <% end %>
 <% end %>
