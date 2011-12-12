@@ -93,6 +93,7 @@ class User < ActiveRecord::Base
 
   def like!(interest)
     likes.create!(:interest_id => interest.id)
+    posts.create!(:content => self.name + " likes " + interest.name)
   end
 
   def unlike!(interest)
@@ -105,6 +106,7 @@ class User < ActiveRecord::Base
 
   def affiliate!(organization)
     affiliations.create!(:organization_id => organization.id)
+    posts.create!(:content => self.name + " joined " + organization.name)
   end
 
   def unaffiliate!(organization)
