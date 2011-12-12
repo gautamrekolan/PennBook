@@ -118,6 +118,48 @@ class User < ActiveRecord::Base
     find(:all, :conditions => ['first_name LIKE ? OR last_name LIKE ? OR email LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%"])
   end
 
+  def to_json()
+    children = []
+    data_content = "<h4>#{self.name}</h4><b>Following:</b><ul>"
+    
+    self.following.each do |user|
+      children_deep = []
+      data_content_deep = "<h4>#{user.name}</h4><b>Following:</b><ul>"
+      user.following.each do |user_deep|
+        children_deep << {
+          :id => "#{user_deep.id}",
+          :name => user_deep.name,
+          :children => [],
+          :data => {
+            :relation => "<h4>#{user_deep.name}</h4>"
+          }
+        }
+        data_content_deep += "<li>#{user_deep.name}</li>".html_safe
+      end
+      data_content_deep += "</ul>"
+      
+      children << {
+        :id => "#{user.id}",
+        :name => user.name,
+        :children => children_deep,
+        :data => {
+          :relation => data_content_deep
+        }
+      }
+      data_content += "<li>#{user.name}</li>".html_safe
+    end
+    data_content += "</ul>"
+    
+    { 
+      :id => "#{self.id}",
+      :name => self.name,
+      :children => children,
+      :data => {
+        :relation => data_content
+      }
+    }.to_json
+  end
+
   private
 
     def encrypt_password
