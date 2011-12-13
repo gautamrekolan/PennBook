@@ -120,21 +120,21 @@ class User < ActiveRecord::Base
 
   def to_json()
     children = []
-    data_content = "<h4>#{self.name}</h4><b>Following:</b><ul>"
+    data_content = "<h4><a href='users/#{self.id}'>#{self.name}</a></h4><b>Following:</b><ul>"
     
     self.following.each do |user|
       children_deep = []
-      data_content_deep = "<h4>#{user.name}</h4><b>Following:</b><ul>"
+      data_content_deep = "<h4><a href='users/#{user.id}'>#{user.name}</a></h4><b>Following:</b><ul>"
       user.following.each do |user_deep|
         children_deep << {
           :id => "#{user_deep.id}",
           :name => user_deep.name,
           :children => [],
           :data => {
-            :relation => "<h4>#{user_deep.name}</h4>"
+            :relation => "<h4><a href='users/#{user_deep.id}'>#{user_deep.name}</a></h4>"
           }
         }
-        data_content_deep += "<li>#{user_deep.name}</li>".html_safe
+        data_content_deep += "<li><a href='users/#{user_deep.id}'>#{user_deep.name}</a></li>".html_safe
       end
       data_content_deep += "</ul>"
       
@@ -146,7 +146,7 @@ class User < ActiveRecord::Base
           :relation => data_content_deep
         }
       }
-      data_content += "<li>#{user.name}</li>".html_safe
+      data_content += "<li><a href='users/#{user.id}'>#{user.name}</a></li>".html_safe
     end
     data_content += "</ul>"
     

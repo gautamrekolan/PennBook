@@ -1,3 +1,7 @@
+<script type="text/javascript">
+  var json = <%= @user.to_json.html_safe %>;
+</script>
+
 <%= javascript_include_tag "pages/pages" %>
 <%= javascript_include_tag "pages/jit-yc" %>
 
