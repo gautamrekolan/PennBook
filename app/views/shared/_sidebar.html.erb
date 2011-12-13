@@ -5,6 +5,6 @@
   <%= render 'shared/stats' %>
   
   <% if current_user?(@user) %>
-    <%= link_to 'Visualize Network', "/visualize" %>
+    <%= link_to 'Visualize Network', "/visualize", :class => "btn" %>
   <% end %>
 </td>
