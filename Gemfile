@@ -6,14 +6,19 @@ gem 'jquery-rails'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
 gem 'json'
 gem 'faker'
 gem 'less'
 gem 'gravatar_image_tag', '1.0.0.pre2'
 
-group :development do
+group :development, :test do
   gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
+  gem 'sqlite3'
+end
+
+group :production do
+  # gems specifically for Heroku go here
+  gem 'pg'
 end
 
 # Gems used only for assets and not required
