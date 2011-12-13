@@ -1,4 +1,5 @@
-Created by:
+Created by
+----------
 
 * Ceasar Bautista (ceasarb@seas.upenn.edu)
 * Adi Dahiya (adahiya@seas.upenn.edu)
