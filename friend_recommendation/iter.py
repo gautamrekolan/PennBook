@@ -16,7 +16,7 @@ def mapper(key, value):
   """
   try:
     u, v = value.split("\t")
-  except:
+  except ValueError:
     k, l, p = value.split("\t")
     yield int(k), (int(l), float(p))
   else:
