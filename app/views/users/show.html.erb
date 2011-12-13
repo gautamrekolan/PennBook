@@ -6,9 +6,7 @@
           <td class="gravatar"><%= gravatar_for @user, :size => 100 %></td>
           <td class="name"><h2>
             <%= link_to @title, @user %></h2>
-            <% if not @user.posts.empty? %>
-              <%= @user.posts.first(:conditions => { :poster_id => nil }).content %>
-            <% end %>
+            <%= @user.posts.first(:conditions => { :poster_id => nil }).content rescue '' %>
             <%= render 'follow_form' if signed_in? %>
           </td>
           <td class="info">
