@@ -1,6 +1,8 @@
 PennBook Readme
 --------
-Created by:
+
+Created by
+----------
 * Ceasar Bautista (ceasarb@seas.upenn.edu)
 * Adi Dahiya (adahiya@seas.upenn.edu)
 
@@ -309,6 +311,7 @@ Instructions for running PennBook
 5. Run "rails -s" to start the server.
 6. Go to localhost:3000 and sign-up.
 
+
 Instructions for running Friend Recommendation
 -----------
 1. Install Python
@@ -323,4 +326,3 @@ Instructions for running Friend Recommendation
 6. To run dumbo on a Hadoop cluster instead of your local machine, add "-hadoop
    /usr/local/hadoop" after the name of the file being run in the dumbo command:
    "dumbo start iter.py -hadoop /usr/local/hadoop -input out1 -output out2"
-
