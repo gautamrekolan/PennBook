@@ -1,5 +1,6 @@
+PennBook Readme
+--------
 Created by:
-
 * Ceasar Bautista (ceasarb@seas.upenn.edu)
 * Adi Dahiya (adahiya@seas.upenn.edu)
 
@@ -13,17 +14,21 @@ Features
 * Following other Users
 * Dynamic newsfeed on Home page
 * List of current online followers
-* Network visualization
-* Ability to follow users
+* Network visualization (using javascript library)
+    The graph shows users you are following 2 levels deep.
+    This means that you can see your friends' friends, but not beyond that.
+    Users with the same affiliation as you will also show up in the graph (in
+    red).
+* Ability to follow users (asymmetric 'friending' model)
 * Abilitiy to posts on other's walls
 * Persistent sessions
 * User directory with search
-* Ability to delete posts and comments
+* Ability to delete your own posts and comments
  
 
 Extra Credit claimed
 --------------------
-* ???
+
 
 
 Source Files
@@ -295,11 +300,27 @@ vendor/plugins
 vendor/plugins/.gitkeep
 
 
-Instructions
+Instructions for running PennBook
 ------------
-1. Install Rails
-2. Run "bundle install" to install the Ruby gems.
+1. Install Ruby, Rails, and sqlite.
+2. Run "bundle install" to install the Ruby gems for this project.
 3. Run "bundle exec rake db:migrate" to set up the database.
 4. Run "bundle exec rake db:populate" to populate the database with test data.
 5. Run "rails -s" to start the server.
 6. Go to localhost:3000 and sign-up.
+
+Instructions for running Friend Recommendation
+-----------
+1. Install Python
+2. If pip or easyinstall is available, run "pip install dumbo" or "easyinstall dumbo" to install Dumbo. Otherwise, follow the instructions at https://github.com/klbostee/dumbo/wiki.
+3. Go the friend_recommendation directory and run "dumbo start init.py -input
+   EdgeList.txt -output out1"
+4. Run the same command for iter.py (with input as out1, etc and output as out2,
+   etc) until convergence
+5. Run the same command for finish.py to get a list of friend recommendation
+   labels (output contains list of directed edges with their 'degree of
+   recommendation' as a decimal fraction)
+6. To run dumbo on a Hadoop cluster instead of your local machine, add "-hadoop
+   /usr/local/hadoop" after the name of the file being run in the dumbo command:
+   "dumbo start iter.py -hadoop /usr/local/hadoop -input out1 -output out2"
+

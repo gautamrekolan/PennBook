@@ -158,10 +158,10 @@ table.posts td.post div.content {
   min-height: 45px;
 }
 table.posts td.post div.text {
-  max-width: 510px;
+  max-width: 485px;
 }
 table.posts td.post ul.comments div.text {
-  max-width: 450px;
+  max-width: 425px;
 }
 table.posts a.delete {
   display: none;
