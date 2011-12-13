@@ -6,15 +6,19 @@
           <td class="gravatar"><%= gravatar_for @user, :size => 100 %></td>
           <td class="name"><h2>
             <%= link_to @title, @user %></h2>
-            <%= link_to @user.email, "mailto:" + @user.email %> <br/>
-            <% if not @user.organizations.empty? %>
-              <%= link_to @user.organizations[0].name, @user.organizations[0] %>
+            <% if not @user.posts.empty? %>
+              <%= @user.posts.first(:conditions => { :poster_id => nil }).content %>
             <% end %>
             <%= render 'follow_form' if signed_in? %>
           </td>
           <td class="info">
             <p> <b>Birthday:</b> <%= @user.birthday %> </p>
-            <%= link_to 'Edit', edit_user_path(@user) if signed_in? && current_user?(@user) %>
+            <%= link_to @user.email, "mailto:" + @user.email %> <br/>
+            <% if not @user.organizations.empty? %>
+              <%= link_to @user.organizations[0].name, @user.organizations[0] %> <br/>
+            <% end %>
+            <br/>
+            <%= link_to 'Edit Profile', edit_user_path(@user) if signed_in? && current_user?(@user) %>
           </td>
         </tr>
       </table>
