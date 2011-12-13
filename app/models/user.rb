@@ -148,6 +148,20 @@ class User < ActiveRecord::Base
       }
       data_content += "<li><a href='users/#{user.id}'>#{user.name}</a></li>".html_safe
     end
+    
+    affiliations.each do |a|
+      Organization.find(a.organization_id).users.each do |affiliated_user|
+        children << {
+          :id => "#{affiliated_user.id}",
+          :name => "(#{affiliated_user.name})",
+          :children => [],
+          :data => {
+            :relation => "<h4><a href='users/#{affiliated_user.id}'>#{affiliated_user.name}</a></h4>"
+          }
+        }
+      end
+    end
+    
     data_content += "</ul>"
     
     { 

@@ -99,6 +99,11 @@ function init(){
                 style.display = 'none';
             }
 
+			if (node.name.indexOf("(") != -1) {
+				// This means it's not a followed user, but an affiliate
+				style.color = "#FBB";
+			}
+
             var left = parseInt(style.left);
             var w = domElement.offsetWidth;
             style.left = (left - w / 2) + 'px';
