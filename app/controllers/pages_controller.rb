@@ -3,6 +3,8 @@ class PagesController < ApplicationController
     @title = "Home"
     if signed_in?
       @user = current_user
+      @users = @user.followers.where(
+        :updated_at => (Time.now - 5.minutes)..(Time.now))
       @title = @user.name
       @post = Post.new
       @posts = current_user.feed.paginate(:page => params[:page])
