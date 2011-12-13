@@ -75,8 +75,10 @@ class User < ActiveRecord::Base
   end
 
   def follow!(followed)
-    relationships.create!(:followed_id => followed.id)
-    posts.create!(:content => self.name + " is now following " + followed.name)
+    if self != followed
+      relationships.create!(:followed_id => followed.id)
+      posts.create!(:content => self.name + " is now following " + followed.name)
+    end
   end
 
   def unfollow!(followed)
@@ -116,6 +118,12 @@ class User < ActiveRecord::Base
 
   def self.search(search)
     find(:all, :conditions => ['first_name LIKE ? OR last_name LIKE ? OR email LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%"])
+  end
+
+  def self.random
+    if (c = count) != 0
+      find(:first, :offset =>rand(c))
+    end
   end
 
   def to_json()

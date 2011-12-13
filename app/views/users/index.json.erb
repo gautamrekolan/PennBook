@@ -1,0 +1,8 @@
+<% edges = [] %>
+<% @users.each do |user| %>
+  <% user.following.each do |f| %>
+    <% edges << [user.id, f.id] %>
+  <% end.join(",") %>
+<% end %>
+
+<%= edges.to_json %>

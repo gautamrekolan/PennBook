@@ -8,11 +8,6 @@ class UsersController < ApplicationController
     else
       @users = User.paginate(:page => params[:page])
     end
-    
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @users }
-    end
   end
 
   def show

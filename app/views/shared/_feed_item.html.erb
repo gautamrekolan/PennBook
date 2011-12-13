@@ -18,7 +18,7 @@
     </span>
     
     <div class="content">
-      <%= feed_item.content %>
+      <div class="text"><%= feed_item.content %></div>
       <span class="timestamp"> <%= time_ago_in_words(feed_item.created_at) %> ago </span>
     </div>
     
@@ -34,8 +34,10 @@
                                     :title => "Delete comment",
                                     :class => "delete" %>
           <% end %>
-          <span><%= link_to @commenter.first_name + " " + @commenter.last_name, @commenter %></span>
-          <span class="comment_content"><%= comment.content %></span> <br/>
+          <div class="text">
+            <span><%= link_to @commenter.first_name + " " + @commenter.last_name, @commenter %></span>
+            <span class="comment_content"><%= comment.content %></span>
+          </div>
           <span class="timestamp"> <%= time_ago_in_words(comment.created_at) %> ago </span>
         </li>
         <% end %>
